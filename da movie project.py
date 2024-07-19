@@ -53,26 +53,3 @@ while ch.lower() == "y":
     num=int(input("What option do you choose?"))
     option(num)
     ch=input("Do you want to continue or not?")
-
-
-
-"""df = pd.DataFrame(movieDataset)
-types = df.dtypes
-shape = df.shape
-info = df.info()
-asc_order = df.sort_values("ratings", ascending=True)
-desc_order = df.sort_values("ratings", ascending=False)
-pivot = df.pivot(columns="movies",
-values=["ratings"])
-describe = df.describe()
-
-
-print(df)
-print(types)
-print(shape)
-print(info)
-print(asc_order)
-print(desc_order)
-print(pivot)
-print(describe)"""
-                
