@@ -1,56 +1,69 @@
 import pandas as pd
 
+#creates menu of options
 def option(num):
+    #outputs the first 5 rows of the csv file
     if num == 1:
         item5 = df.head()
         print(item5)
+    #outputs the sum of all columns
     if num == 2:
-        row1 = int(input("Starting row?"))
-        row2 = int(input("Final row?"))
-        col1 = int(input("Starting column?"))
-        col2 = int(input("Final column?"))
-        sel = item5.iloc([row1, row2], [col1, col2])
-        print(sel)
-    if num == 3:
-        types = df.dtypes
-        print(types)
-    if num == 4:
-        shape = df.shape
-        print(shape)
-    if num == 5:
-        info = df.info()
-        print(info)
-    if num == 6:
-        asc_order = df.sort_values("ratings", ascending=True)
-        print(asc_order)
-    if num == 7:
-        desc_order = df.sort_values("ratings", ascending=False)
-        print(desc_order)
-    if num == 8:
-        pivot = df.pivot(columns="movies", values=["ratings"])
-        print(pivot)
-    if num == 9:
-        describe = df.describe()
-        print(describe)
-    if num == 10:
         df_sum = df.sum()
         print(df_sum)
-    if num == 11:
+    #outputs the cumulative sum of all columns
+    if num == 3:
         df_cumsum = df.cumsum()
         print(df_cumsum)
-    if num == 12:
+    #outputs the maximum value of all columns
+    if num == 4:
         df_max = df.max()
         print(df_max)
-    if num == 13:
+    #outputs the minimum value of all columns
+    if num == 5:
         df_min = df.min()
         print(df_min)
-    if num == 14:
-        mean = df.mean()
+    #outputs the mean value of a column
+    if num == 6:
+        print(df.columns)
+        col = str(input("What column do you want the mean of?"))
+        print(df[col])
+        mean = df[col].mean()
         print(mean)
-    if num == 15:
-        median = df.median()
+    #outputs the median value of a column
+    if num == 7:
+        print(df.columns)
+        col = str(input("What column do you want the median of?"))
+        print(df[col])
+        median = df[col].median()
         print(median)
-    elif num not in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
+    if num == 8:
+        asc_order = df.sort_values("ratings", ascending=True)
+        print(asc_order)
+    if num == 9:
+        desc_order = df.sort_values("ratings", ascending=False)
+        print(desc_order)
+    #outputs the data frame pivot
+    if num == 10:
+        pivot = df.pivot(columns="movies", values=["ratings"])
+        print(pivot)
+    #outputs the data frame types
+    if num == 11:
+        types = df.dtypes
+        print(types)
+    #outputs the data frame shape
+    if num == 12:
+        shape = df.shape
+        print(shape)
+    #outputs the data frame info
+    if num == 13:
+        info = df.info()
+        print(info)
+    #outputs the data frame describe
+    if num == 14:
+        describe = df.describe()
+        print(describe)
+   
+    elif num not in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]:
         print("Option does not exist, would you like to try again?")
         ch = input("[y/n]?")
         if ch.lower() == "y":
@@ -61,23 +74,21 @@ def option(num):
 df = pd.read_csv("sample.csv")
 print("Options:")
 print("1. View 1st 5 rows of dataset")
-print("2. View Selected rows and columns")
-print("3. Data Frame Types")
-print("4. Data Frame Shape")
-print("5. Data Frame Info")
-print("6. Sort Data in Ascending Order")
-print("7. Sort Data in Descending Order")
-print("8. Data Frame Pivot")
-print("9. Data Frame Describe")
-print("10. Sum of Values")
-print("11. Cumulative Sum of Values")
-print("12. Maximum Value")
-print("13. Minimum Value")
-print("14. Mean of Values")
-print("15. Median of Values")
+print("2. Sum of Values")
+print("3. Cumulative Sum of Values")
+print("4. Maximum Value")
+print("5. Minimum Value")
+print("6. Mean of Values in a column")
+print("7. Median of Values in a column")
+print("8. Sort Data in Ascending Order")
+print("9. Sort Data in Descending Order")
+print("10. Data Frame Pivot")
+print("11. Data Frame Types")
+print("12. Data Frame Shape")
+print("13. Data Frame Info")
+print("14. Data Frame Describe")
 ch="y"
 while ch.lower() == "y":
     num=int(input("What option do you choose?"))
     option(num)
-    ch=input("Do you want to continue or not?")
-
+    ch=input("Do you want to continue or not? [y/n]")
