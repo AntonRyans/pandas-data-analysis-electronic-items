@@ -1,2 +1,2 @@
-# data analysis movies
- A data analysis simple project I made on a small movie database with python and the pandas library in python
+# data analysis electronics
+A simple data analysis project I made where you can select from options what you want to do with the dataset.
