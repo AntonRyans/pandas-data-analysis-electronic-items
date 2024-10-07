@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 #creates menu of options
 def option(num):
@@ -25,26 +26,35 @@ def option(num):
     #outputs the mean value of a column
     if num == 6:
         print(df.columns)
-        col = str(input("What column do you want the mean of?"))
+        col = str(input("What column do you want the mean of? "))
         print(df[col])
         mean = df[col].mean()
         print(mean)
     #outputs the median value of a column
     if num == 7:
         print(df.columns)
-        col = str(input("What column do you want the median of?"))
+        col = str(input("What column do you want the median of? "))
         print(df[col])
         median = df[col].median()
         print(median)
+    #outputs the ascending order of the users selected column's data
     if num == 8:
-        asc_order = df.sort_values("ratings", ascending=True)
+        print(df.columns)
+        col = str(input("What column do you want the ascending order of? "))
+        asc_order = df.sort_values(col, ascending=True)
         print(asc_order)
+    #outputs the descending order of the users selected column's data
     if num == 9:
-        desc_order = df.sort_values("ratings", ascending=False)
+        print(df.columns)
+        col = str(input("What column do you want the descending order of? "))
+        desc_order = df.sort_values(col, ascending=False)
         print(desc_order)
-    #outputs the data frame pivot
+    #outputs the data frame pivot of the users selected columns
     if num == 10:
-        pivot = df.pivot(columns="movies", values=["ratings"])
+        print(df.columns)
+        col = str(input("What column do you want the dataframe pivot of? "))
+        val = str(input("What column do you want the dataframe pivot values of? "))
+        pivot = df.pivot(columns=col, values=[val])
         print(pivot)
     #outputs the data frame types
     if num == 11:
@@ -62,10 +72,19 @@ def option(num):
     if num == 14:
         describe = df.describe()
         print(describe)
-   
-    elif num not in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]:
-        print("Option does not exist, would you like to try again?")
-        ch = input("[y/n]?")
+    #outputs the data frame visualisation of the users selected columns
+    if num == 15:
+        print(df.columns)
+        col = str(input("What column do you want to be in the x-axis of the graph? "))
+        val = str(input("What column do you want to be in the y-axis of the graph? "))
+        x = df[col]
+        y = df[val]
+        plt.scatter(x,y)
+        plt.show()
+
+    elif num not in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
+        print("Option does not exist, would you like to try again? ")
+        ch = input("[y/n]? ")
         if ch.lower() == "y":
             return option(num)
     else:
@@ -87,8 +106,9 @@ print("11. Data Frame Types")
 print("12. Data Frame Shape")
 print("13. Data Frame Info")
 print("14. Data Frame Describe")
+print("15. Data Frame Visualisation")
 ch="y"
 while ch.lower() == "y":
-    num=int(input("What option do you choose?"))
+    num=int(input("What option do you choose? "))
     option(num)
-    ch=input("Do you want to continue or not? [y/n]")
+    ch=input("Do you want to continue or not? [y/n] ")
